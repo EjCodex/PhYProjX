@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Found Items • YouFoundGa</title>
+<meta name="description" content="Admin Found Items - YouFoundGa Lost and Found System">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-page">
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="YouFoundGa.png" alt="YouFoundGa logo" class="brand-logo">
+      <span class="brand-name">YouFoundGa</span>
+    </div>
+    
+    <div class="admin-section">
+      <div class="admin-info">
+        <div class="admin-icon">🔔</div>
+        <span>Admin</span>
+        <button class="admin-login-btn">Log in</button>
+      </div>
+    </div>
+    
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="admin-lost.html" class="nav-link">Lost Items</a>
+      <a href="admin-found.html" class="nav-link active">Found Items</a>
+    </nav>
+    
+    <div class="sidebar-footer">
+      <a href="settings.html" class="footer-link">Settings</a>
+      <a href="#" class="footer-link">Logout</a>
+    </div>
+  </aside>
+  
+  <!-- Main Content -->
+  <main class="content">
+    <div class="page-header">
+      <h1 class="page-title">Found Items</h1>
+      <p class="page-subtitle">Main branch • Tagum, Davao del norte</p>
+    </div>
+
+    <!-- Notifications Panel -->
+    <div id="notifPanelFound" class="notif-panel" role="dialog" aria-modal="true" aria-labelledby="notifTitleFound">
+      <div class="notif-header">
+        <div class="notif-icon">🔔</div>
+        <div id="notifTitleFound" class="notif-title">Notifications</div>
+      </div>
+      <button class="notif-row"><span>Messages</span></button>
+      <button class="notif-row"><span>Comments</span></button>
+      <button class="notif-row"><span>Pending Approval</span><span class="notif-badge">1</span></button>
+    </div>
+    
+    <div class="filter-section">
+      <div class="filter-dropdown" id="adminFilter">
+        <button class="filter-btn" id="filterToggle" aria-haspopup="true" aria-expanded="false">
+          Category
+          <span class="filter-arrow">▼</span>
+        </button>
+        <div class="filter-menu" id="filterMenu" role="menu">
+          <button class="filter-item" data-status="all" role="menuitem">All</button>
+          <button class="filter-item" data-status="claimed" role="menuitem">Claimed</button>
+          <button class="filter-item" data-status="unclaimed" role="menuitem">Unclaimed</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="found-items-grid">
+      <!-- Found Item Card 1 -->
+      <div class="found-item-card" data-status="claimed">
+        <div class="item-header">
+          <div class="user-info">
+            <div class="user-avatar">👤</div>
+            <div class="user-details">
+              <div class="user-name">Juan dela Cruz</div>
+              <div class="user-type">(Student)</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item-image-container">
+          <div class="item-image">
+            <div class="placeholder-image">🥤</div>
+          </div>
+        </div>
+        
+        <div class="item-details">
+          <h3 class="item-title">White Tumbler</h3>
+          <p class="item-date">Found September 20, 2025 8:21PM</p>
+        </div>
+        
+        <div class="item-status">
+          <button class="status-btn claimed">Claimed</button>
+        </div>
+      </div>
+      
+      <!-- Found Item Card 2 -->
+      <div class="found-item-card" data-status="unclaimed">
+        <div class="item-header">
+          <div class="user-info">
+            <div class="user-avatar">👤</div>
+            <div class="user-details">
+              <div class="user-name">John doe</div>
+              <div class="user-type">(Student)</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item-image-container">
+          <div class="item-image">
+            <div class="placeholder-image">🥤</div>
+          </div>
+        </div>
+        
+        <div class="item-details">
+          <h3 class="item-title">White Tumbler</h3>
+          <p class="item-date">Found September 20, 2025 8:21PM</p>
+        </div>
+        
+        <div class="item-status">
+          <button class="status-btn unclaimed">Unclaimed</button>
+        </div>
+      </div>
+      
+      <!-- Found Item Card 3 -->
+      <div class="found-item-card" data-status="unclaimed">
+        <div class="item-header">
+          <div class="user-info">
+            <div class="user-avatar">👤</div>
+            <div class="user-details">
+              <div class="user-name">Maria Santos</div>
+              <div class="user-type">(Student)</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="item-image-container">
+          <div class="item-image">
+            <div class="placeholder-image">📱</div>
+          </div>
+        </div>
+        
+        <div class="item-details">
+          <h3 class="item-title">iPhone 13</h3>
+          <p class="item-date">Found September 19, 2025 2:15PM</p>
+        </div>
+        
+        <div class="item-status">
+          <button class="status-btn unclaimed">Unclaimed</button>
+        </div>
+      </div>
+      
+      <!-- Placeholder Cards -->
+      <div class="found-item-card placeholder">
+        <div class="placeholder-content">
+          <div class="placeholder-icon">🏔️</div>
+        </div>
+      </div>
+      
+      <div class="found-item-card placeholder">
+        <div class="placeholder-content">
+          <div class="placeholder-icon">🏔️</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Admin page functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Notifications
+  const panel = document.getElementById('notifPanelFound');
+  const adminIcon = document.querySelector('.admin-icon');
+  function togglePanel(){
+    const open = panel.classList.contains('show');
+    panel.classList.toggle('show');
+  }
+  if(adminIcon && panel){
+    adminIcon.addEventListener('click', (e)=>{ e.stopPropagation(); togglePanel(); });
+    document.addEventListener('click', ()=>{ panel.classList.remove('show'); });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { panel.classList.remove('show'); } });
+  }
+
+  // Dropdown filter
+  const filterToggle = document.getElementById('filterToggle');
+  const filterMenu = document.getElementById('filterMenu');
+  const filterItems = document.querySelectorAll('.filter-item');
+  
+  function toggleFilterMenu(){
+    const expanded = filterToggle.getAttribute('aria-expanded') === 'true';
+    filterToggle.setAttribute('aria-expanded', String(!expanded));
+    filterMenu.classList.toggle('show');
+  }
+  
+  if(filterToggle && filterMenu){
+    filterToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleFilterMenu();
+    });
+    document.addEventListener('click', () => {
+      filterMenu.classList.remove('show');
+      filterToggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+  
+  // Filtering logic
+  const cards = document.querySelectorAll('.found-item-card[data-status]');
+  function applyStatusFilter(status){
+    cards.forEach(card => {
+      const cardStatus = card.getAttribute('data-status');
+      card.style.display = (status === 'all' || status === cardStatus) ? '' : 'none';
+    });
+  }
+  
+  filterItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const status = item.getAttribute('data-status');
+      applyStatusFilter(status);
+      filterMenu.classList.remove('show');
+      filterToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+  
+  // Default: show all
+  applyStatusFilter('all');
+  
+  // Handle status buttons
+  const statusBtns = document.querySelectorAll('.status-btn');
+  statusBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      // Add status change functionality here
+      console.log('Status button clicked:', this.textContent);
+    });
+  });
+});
+</script>
+
+</body>
+</html>

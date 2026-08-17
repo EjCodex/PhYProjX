@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouFoundGa • Settings</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="profile-page">
+<!-- Desktop Layout -->
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Lost and found with red background white.png" alt="logo">
+      <span>YouFoundGa</span>
+    </div>
+    <div class="profile-mini">
+      <div class="avatar"></div>
+      <div>
+        <div style="font-weight:700">User</div>
+        <div style="font-size:12px;opacity:.8">Status</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="lost.html">Lost Items</a>
+      <a href="found.html">Found Items</a>
+      <a class="active" href="settings.html">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div>
+        <a href="#" id="sidebarLogoutLink">Logout</a>
+      </div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1 class="h1">Settings</h1>
+    
+    <div style="display: grid; grid-template-columns: 200px 1fr; gap: 30px; margin-top: 20px;">
+      <!-- Settings Sidebar -->
+      <div class="settings-sidebar">
+        <div class="settings-nav-item active" data-section="account">
+          <div class="settings-nav-indicator"></div>
+          Account info
+        </div>
+        <div class="settings-nav-item" data-section="logout">
+          <div class="settings-nav-indicator"></div>
+          Logout
+        </div>
+      </div>
+      
+      <!-- Settings Content -->
+      <div class="settings-content">
+        <!-- Account Info Section -->
+        <div class="settings-section active" id="account-section">
+          <h2 style="font-size: 24px; font-weight: 700; margin: 0 0 20px 0;">Account Info</h2>
+          
+          <div class="account-info-grid">
+            <div class="info-item">
+              <span class="info-label">Display Name:</span>
+              <span class="info-value">User</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Student ID Number:</span>
+              <span class="info-value" style="font-weight: 700;">Unknown</span>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Account:</span>
+              <span class="info-value">Unknown</span>
+            </div>
+            
+            <div class="info-item editable">
+              <span class="info-label">Year level:</span>
+              <span class="info-value">Unknown</span>
+              <button class="edit-btn">✏️</button>
+            </div>
+            
+            <div class="info-item editable">
+              <span class="info-label">Course:</span>
+              <span class="info-value">Unknown</span>
+              <button class="edit-btn">✏️</button>
+            </div>
+            
+            <div class="info-item">
+              <span class="info-label">Email:</span>
+              <span class="info-value">Unknown</span>
+            </div>
+          </div>
+          
+          <!-- Gender Selection -->
+          <div class="gender-section">
+            <span class="info-label" style="display: block; margin-bottom: 12px;">Gender</span>
+            <div class="gender-buttons">
+              <button class="gender-btn active" data-gender="male">MALE</button>
+              <button class="gender-btn" data-gender="female">FEMALE</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Logout Section -->
+        <div class="settings-section" id="logout-section">
+          <h2 style="font-size: 24px; font-weight: 700; margin: 0 0 20px 0;">Logout</h2>
+          
+          <div class="logout-confirmation">
+            <p style="font-size: 16px; margin: 0 0 20px 0;">Are you sure you want to log out?</p>
+            <div class="logout-buttons">
+              <button class="logout-btn logout-yes">Yes</button>
+              <button class="logout-btn logout-no">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="Lost and found with red background white.png" alt="YouFoundGa logo" style="width: 32px; height: 32px;">
+    <span style="font-weight: 700; font-size: 18px;">YouFoundGa</span>
+  </div>
+  <div style="margin-left: auto;">
+    <button style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">⚙️</button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav">
+  <button class="mobile-nav-item" data-page="home">Home</button>
+  <button class="mobile-nav-item" data-page="lost">Lost Items</button>
+  <button class="mobile-nav-item" data-page="found">Found Items</button>
+  <button class="mobile-nav-item active" data-page="settings">Settings</button>
+</nav>
+
+<!-- Mobile Content -->
+<div class="mobile-content">
+  <h1 style="font-size: 24px; margin: 0 0 8px 0;">Settings</h1>
+  <p style="color: var(--muted); margin: 0 0 16px 0;">Manage your account and preferences</p>
+
+  <!-- Profile Settings -->
+  <div class="mobile-form">
+    <h3 style="margin: 0 0 16px 0;">Profile Settings</h3>
+    
+    <div class="mobile-form-group">
+      <label class="mobile-form-label">Full Name</label>
+      <input type="text" class="mobile-form-input" value="User" placeholder="Enter your full name">
+    </div>
+    
+    <div class="mobile-form-group">
+      <label class="mobile-form-label">Student ID</label>
+      <input type="text" class="mobile-form-input" value="123456" placeholder="Enter your student ID">
+    </div>
+    
+    <div class="mobile-form-group">
+      <label class="mobile-form-label">Email</label>
+      <input type="email" class="mobile-form-input" placeholder="Enter your email">
+    </div>
+    
+    <div class="mobile-form-group">
+      <label class="mobile-form-label">Phone Number</label>
+      <input type="tel" class="mobile-form-input" placeholder="Enter your phone number">
+    </div>
+    
+    <div class="mobile-form-group">
+      <label class="mobile-form-label">About</label>
+      <textarea class="mobile-form-textarea" placeholder="Tell us about yourself"></textarea>
+    </div>
+    
+    <button class="mobile-btn mobile-btn-primary" style="width: 100%; padding: 12px;">Save Changes</button>
+  </div>
+
+  <!-- Account Actions -->
+  <div class="mobile-form">
+    <h3 style="margin: 0 0 16px 0;">Account Actions</h3>
+    
+    <button class="mobile-btn mobile-btn-secondary" style="width: 100%; margin-bottom: 8px;">Change Password</button>
+    <button class="mobile-btn mobile-btn-secondary" style="width: 100%; margin-bottom: 8px;">Privacy Settings</button>
+    <button class="mobile-btn mobile-btn-secondary" style="width: 100%; margin-bottom: 8px;">Notification Settings</button>
+    <button class="mobile-btn" style="width: 100%; background: #dc2626; color: white;">Logout</button>
+  </div>
+</div>
+
+<!-- Floating Action Button -->
+<button class="mobile-fab" id="mobileFab">+</button>
+
+<script>
+(function(){
+  // Settings sidebar navigation
+  const settingsNavItems = document.querySelectorAll('.settings-nav-item');
+  const settingsSections = document.querySelectorAll('.settings-section');
+  const sidebarLogoutLink = document.getElementById('sidebarLogoutLink');
+  
+  // Gender buttons
+  const genderButtons = document.querySelectorAll('.gender-btn');
+  
+  // Logout buttons
+  const logoutYes = document.querySelector('.logout-yes');
+  const logoutNo = document.querySelector('.logout-no');
+  
+  // Settings navigation
+  settingsNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const section = item.dataset.section;
+      
+      // Update active nav item
+      settingsNavItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+      
+      // Update active section
+      settingsSections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById(section + '-section').classList.add('active');
+    });
+  });
+
+  // If URL includes #logout, open the Logout section by default
+  if (location.hash === '#logout') {
+    settingsNavItems.forEach(nav => nav.classList.remove('active'));
+    const logoutNav = document.querySelector('.settings-nav-item[data-section="logout"]');
+    if (logoutNav) logoutNav.classList.add('active');
+    settingsSections.forEach(sec => sec.classList.remove('active'));
+    const logoutSection = document.getElementById('logout-section');
+    if (logoutSection) logoutSection.classList.add('active');
+  }
+  
+  // Gender selection
+  genderButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      genderButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  
+  // Logout confirmation
+  if(logoutYes) {
+    logoutYes.addEventListener('click', () => {
+      if(confirm('Are you sure you want to log out?')) {
+        // Handle logout logic here
+        console.log('User logged out');
+        // You can redirect to login page or perform logout actions
+      }
+    });
+  }
+  
+  if(logoutNo) {
+    logoutNo.addEventListener('click', () => {
+      // Switch back to account info
+      settingsNavItems.forEach(nav => nav.classList.remove('active'));
+      document.querySelector('[data-section="account"]').classList.add('active');
+      settingsSections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById('account-section').classList.add('active');
+    });
+  }
+  if(sidebarLogoutLink){
+    sidebarLogoutLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Highlight logout in settings sidebar and show its section
+      settingsNavItems.forEach(nav => nav.classList.remove('active'));
+      const logoutNav = document.querySelector('.settings-nav-item[data-section="logout"]');
+      if (logoutNav) logoutNav.classList.add('active');
+      settingsSections.forEach(sec => sec.classList.remove('active'));
+      document.getElementById('logout-section').classList.add('active');
+    });
+  }
+  
+  // Mobile elements
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  const mobileFab = document.getElementById('mobileFab');
+  
+  // Mobile navigation
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      const page = item.dataset.page;
+      
+      // Update active nav item
+      mobileNavItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+      
+      // Handle navigation (you can add page switching logic here)
+      console.log('Navigate to:', page);
+    });
+  });
+  
+  // Mobile floating action button
+  if(mobileFab) {
+    mobileFab.addEventListener('click', () => {
+      // Handle FAB click (you can add functionality here)
+      console.log('FAB clicked');
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

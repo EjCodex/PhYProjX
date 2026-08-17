@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouFoundGa • Found Items</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Desktop Layout -->
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Lost and found with red background white.png" alt="logo">
+      <span>YouFoundGa</span>
+    </div>
+    <div class="profile" style="align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="avatar"></div>
+        <div>
+          <a href="profile.html" style="font-weight:700;color:#fff;text-decoration:none">User</a>
+          <div style="font-size:12px;opacity:.8">Status</div>
+        </div>
+      </div>
+      <div class="notif-wrap">
+        <button id="userSidebarBellFound" class="notif-bell" aria-haspopup="true" aria-expanded="false" aria-controls="userFoundPanel">🔔</button>
+        <div id="userFoundPanel" class="notif-panel notif-panel--nav" role="dialog" aria-modal="true" aria-labelledby="userFoundTitle">
+          <div class="notif-header">
+            <div class="notif-icon">🔔</div>
+            <div id="userFoundTitle" class="notif-title">Notifications</div>
+          </div>
+          <button class="notif-row"><span>Messages</span><span class="notif-badge">1</span></button>
+          <button class="notif-row"><span>Comments</span></button>
+          <button class="notif-row"><span>Approved</span><span class="notif-badge">1</span></button>
+          <button class="notif-row disabled"><span>Disapproved</span></button>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="lost.html">Lost Items</a>
+      <a class="active" href="found.html">Found Items</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div>
+        <a href="settings.html#logout">Logout</a></div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1 class="h1">Found Items</h1>
+    <p class="sub">Main branch • Tagum, Davao del Norte</p>
+
+  <details class="dropdown-category">
+  <summary class="dropbtn-category">Category </summary>
+  <button id="dropbtn-category"></button>
+  <div class="dropdown-content-category">
+    <a href="#" data-filter="all">All</a>
+    <a href="#" data-filter="wallet">Wallets </a>
+    <a href="#" data-filter="bag">Bags</a>
+    <a href="#" data-filter="keys">Keys</a>
+    <a href="#" data-filter="others">Others</a>
+  </div>
+</details>
+
+    <div class="gallery">
+      <div class="tile-1">
+        <div class="item" data-category="others">
+          <div style="font-size:12px;color:#666;margin:4px 0 8px 6px">Just now</div>
+          <div class="item-header">
+            <img class="item-thumb" src="Sip_Soyuz_White1_530x@2x.webp" alt="White Tumbler">
+            <div>
+              <span class="item-title">White Tumbler</span>
+              <div class="meta" style="margin-top:8px">Found September 20, 2025 • 8:21 PM</div>
+            </div>
+            <button class="pill-found">FOUND ✓</button>
+          </div>
+        </div>
+      </div>
+      <div class="tile-2">
+        <div class="item" data-category="others">
+          <div style="font-size:12px;color:#666;margin:4px 0 8px 6px">Just now</div>
+          <div class="item-header">
+            <img class="item-thumb" src="Sip_Soyuz_White1_530x@2x.webp" alt="White Tumbler">
+            <div>
+              <span class="item-title">White Tumbler</span>
+              <div class="meta" style="margin-top:8px">Found September 20, 2025 • 8:21 PM</div>
+            </div>
+            <button class="pill-found">FOUND ✓</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile-3">
+        <div class="item" data-category="wallet">
+          <div style="font-size:12px;color:#666;margin:4px 0 8px 6px">Just now</div>
+          <div class="item-header">
+            <img class="item-thumb" src="wallet2.jfif" alt="Black Wallet">
+            <div>
+              <span class="item-title">Black Wallet</span>
+              <div class="meta" style="margin-top:8px">Found September 30, 2025 • 4:06 PM</div>
+            </div>
+            <button class="pill-found">FOUND ✓</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile-4">
+        <div class="item" data-category="bag">
+          <div style="font-size:12px;color:#666;margin:4px 0 8px 6px">Just now</div>
+          <div class="item-header">
+            <img class="item-thumb" src="bag.jfif" alt="Hawk Bag">
+            <div>
+              <span class="item-title">Hawk Bag</span>
+              <div class="meta" style="margin-top:8px">Found September 30, 2025 • 3:21 PM</div>
+            </div>
+            <button class="pill-found">FOUND ✓</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<script>
+(function(){
+  const bell = document.getElementById('userSidebarBellFound');
+  const panel = document.getElementById('userFoundPanel');
+  if(!bell || !panel) return;
+  function toggle(){
+    const o = panel.classList.contains('show');
+    bell.setAttribute('aria-expanded', String(!o));
+    panel.classList.toggle('show');
+  }
+  bell.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+  document.addEventListener('click', function(){ panel.classList.remove('show'); bell.setAttribute('aria-expanded','false'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ panel.classList.remove('show'); bell.setAttribute('aria-expanded','false'); }});
+})();
+</script>
+
+  </main>
+</div>
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="Lost and found with red background white.png" alt="YouFoundGa logo" style="width: 32px; height: 32px;">
+    <span style="font-weight: 700; font-size: 18px;">YouFoundGa</span>
+  </div>
+  <div style="margin-left: auto;">
+    <button style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">⚙️</button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav">
+  <button class="mobile-nav-item" data-page="home">Home</button>
+  <button class="mobile-nav-item" data-page="lost">Lost Items</button>
+  <button class="mobile-nav-item active" data-page="found">Found Items</button>
+  <button class="mobile-nav-item" data-page="settings">Settings</button>
+</nav>
+
+<!-- Mobile Content -->
+<div class="mobile-content">
+  <h1 style="font-size: 24px; margin: 0 0 8px 0;">Found Items</h1>
+  <p style="color: var(--muted); margin: 0 0 16px 0;">Main branch • Tagum, Davao del Norte</p>
+
+  <!-- Category Dropdown -->
+  <div class="mobile-form-group">
+    <select class="mobile-form-select">
+      <option>Category</option>
+      <option>Electronics</option>
+      <option>Clothing</option>
+      <option>Accessories</option>
+      <option>Documents</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <!-- User Profile Section -->
+  <div class="mobile-profile">
+    <div class="mobile-profile-header">
+      <img class="mobile-profile-avatar" src="beluga-cat-meme.gif" alt="User Avatar">
+      <div class="mobile-profile-info">
+        <h3>Juan Dela Cruz</h3>
+        <p>123456</p>
+      </div>
+    </div>
+    
+    <div class="mobile-stats">
+      <div class="mobile-stat">
+        <div class="mobile-stat-number">1</div>
+        <div class="mobile-stat-label">Connection\s</div>
+      </div>
+      <div class="mobile-stat">
+        <div class="mobile-stat-number">20</div>
+        <div class="mobile-stat-label">Share\s</div>
+      </div>
+      <div class="mobile-stat">
+        <div class="mobile-stat-number">1</div>
+        <div class="mobile-stat-label">Found\s</div>
+      </div>
+    </div>
+    
+    <button class="mobile-btn mobile-btn-secondary" style="width: 100%;">💬 Chat</button>
+  </div>
+
+  <!-- Found Item Card -->
+  <div class="mobile-item-card">
+    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">Just now</div>
+    
+    <div class="mobile-item-header">
+      <img class="mobile-item-image" src="Sip_Soyuz_White1_530x@2x.webp" alt="White Tumbler">
+      <div class="mobile-item-info">
+        <div class="mobile-item-title">White Tumbler</div>
+        <div class="mobile-item-meta">Found September 20, 2025 • 8:21 PM</div>
+      </div>
+      <button class="mobile-btn mobile-btn-success">✓ FOUND</button>
+    </div>
+    
+    <div style="margin: 8px 0;">
+      <div style="font-weight: 700; margin-bottom: 4px;">📍 Main Branch, UMTC</div>
+      <div style="font-size: 12px; color: #666;">Tagum, Davao del Norte</div>
+    </div>
+    
+    <div style="border: 1px solid #eee; border-radius: 8px; background: #fafafa; padding: 12px; margin: 12px 0;">
+      <div style="font-size: 12px; color: #666; margin-bottom: 4px;">Description</div>
+      <div style="font-size: 14px; line-height: 1.4;">
+        White Tumbler i dunno the brand but its white and it looks like that on the attached picture... 
+        i probably think i left it on volleyball area thangkss.
+      </div>
+    </div>
+    
+    <div class="mobile-item-actions">
+      <button class="mobile-btn mobile-btn-success">✓ FOUND</button>
+      <button class="mobile-btn mobile-btn-primary">💬 Comments</button>
+    </div>
+    
+    <div style="text-align: right; margin-top: 8px; font-size: 12px; color: #666;">7 shares</div>
+  </div>
+
+  <!-- Placeholder Cards -->
+  <div class="mobile-item-card">
+    <div style="height: 120px; background: #f0f0f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #999;">
+      <span>+ Add Found Item</span>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Action Button -->
+<button class="mobile-fab" id="mobileFab">+</button>
+
+<script>
+(function(){
+  const gallery = document.querySelector('.gallery');
+  const links = document.querySelectorAll('.dropdown-content-category a[data-filter]');
+  if(!gallery || links.length === 0) return;
+
+  function applyFilter(category){
+    const items = gallery.querySelectorAll('.item');
+    items.forEach(function(item){
+      const c = item.getAttribute('data-category');
+      const tile = item.closest('[class^="tile-"]');
+      if(!tile) return;
+      tile.style.display = (category === 'all' || c === category) ? '' : 'none';
+    });
+  }
+
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      const category = this.getAttribute('data-filter') || 'all';
+      applyFilter(category);
+    });
+  });
+
+  applyFilter('all');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouFoundGa • Lost Items</title>
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Desktop Layout -->
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="Lost and found with red background white.png" alt="logo">
+      <span>YouFoundGa</span>
+    </div>
+    <div class="profile" style="align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div class="avatar"></div>
+        <div>
+          <a href="profile.html" style="font-weight:700;color:#fff;text-decoration:none">User</a>
+          <div style="font-size:12px;opacity:.8">Status</div>
+        </div>
+      </div>
+      <div class="notif-wrap">
+        <button id="userSidebarBellLost" class="notif-bell" aria-haspopup="true" aria-expanded="false" aria-controls="userLostPanel">🔔</button>
+        <div id="userLostPanel" class="notif-panel notif-panel--nav" role="dialog" aria-modal="true" aria-labelledby="userLostTitle">
+          <div class="notif-header">
+            <div class="notif-icon">🔔</div>
+            <div id="userLostTitle" class="notif-title">Notifications</div>
+          </div>
+          <button class="notif-row"><span>Messages</span><span class="notif-badge">1</span></button>
+          <button class="notif-row"><span>Comments</span></button>
+          <button class="notif-row"><span>Approved</span><span class="notif-badge">1</span></button>
+          <button class="notif-row disabled"><span>Disapproved</span></button>
+        </div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a class="active" href="lost.html">Lost Items</a>
+      <a href="found.html">Found Items</a>
+      <a href="settings.html">Settings</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div>
+        <a href="settings.html">Logout</a></div>
+    </div>
+  </aside>
+
+  <main class="content">
+    <h1 class="h1">Lost Items News Feed</h1>
+    <p class="sub">Main branch • Tagum, Davao del Norte</p>
+
+    <h3>Post Lost item</h3>
+    <div id="postLostTrigger" style="width:420px;height:180px;background:#ddd;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;border:2px dashed #bbb;">+
+    </div>
+
+    <div class="post-card">
+      <div class="item">
+        <div style="font-size:12px;color:#666;margin:4px 0 8px 6px">16 minutes…</div>
+        <div class="item-header">
+          <img class="item-thumb" src="WALLET.jpg" alt="Wallet">
+          <div>
+            <span class="item-title">Wallet</span>
+            <div class="meta" style="margin-top:8px">
+              📞 09123456789 • 📅 September 20, 2025
+            </div>
+          </div>
+          <div class="meta">Jhon doe cruz<br>Student</div>
+        </div>
+        <div class="location">📍 Main Branch, UMTC</div>
+        <div class="meta">Tagum, Davao del Norte</div>
+        <div class="desc">
+          Liesley wallet brand. It has 1000 pesos inside and valid ID's. Please
+          call me on my contact number; last saw it on gym bleachers…
+        </div>
+        <div class="comment-bar">
+          <button class="comment-btn">Comment</button>
+        </div>
+      </div>
+      <div class="meta" style="text-align:right;margin-top:6px">5 shares</div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+(function(){
+  const bell = document.getElementById('userSidebarBellLost');
+  const panel = document.getElementById('userLostPanel');
+  if(!bell || !panel) return;
+  function toggle(){
+    const o = panel.classList.contains('show');
+    bell.setAttribute('aria-expanded', String(!o));
+    panel.classList.toggle('show');
+  }
+  bell.addEventListener('click', function(e){ e.stopPropagation(); toggle(); });
+  document.addEventListener('click', function(){ panel.classList.remove('show'); bell.setAttribute('aria-expanded','false'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ panel.classList.remove('show'); bell.setAttribute('aria-expanded','false'); }});
+})();
+</script>
+
+<!-- Lost Item Post Modal -->
+<div id="lostPostModal" class="modal-overlay" aria-hidden="true">
+  <div class="login-card" role="dialog" aria-modal="true" aria-labelledby="lostPostTitle" style="max-width:820px;width:min(92vw,820px);background:#f2f2f2;">
+    <h3 id="lostPostTitle" style="margin:0 0 12px 0;"> </h3>
+    <div style="display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:start;">
+      <div id="lostImageDrop" style="position:relative;border:1px solid #d9d9d9;background:#fff;border-radius:4px;width:160px;height:120px;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;">
+        <img id="lostImagePreview" alt="Preview" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div id="lostImagePlaceholder" style="width:56px;height:56px;border-radius:50%;border:2px solid #e5e5e5;display:flex;align-items:center;justify-content:center;color:#999;font-size:22px;background:#fff;">+</div>
+        <input id="lostItemImage" type="file" accept="image/*" style="display:none">
+      </div>
+      <input id="lostItemName" type="text" placeholder="Item name" style="height:28px;border:1px solid #d1d5db;border-radius:2px;padding:4px 8px;">
+    </div>
+
+    <div style="display:flex;align-items:center;gap:8px;margin:12px 0 10px 0;">
+      <span>📍</span>
+      <div id="lostLocationMain" style="font-weight:700;">Main Branch, UMTC</div>
+      <button type="button" id="editLocationBtn" style="margin-left:8px;background:none;border:none;color:#111;cursor:pointer;display:inline-flex;align-items:center;gap:4px">🖉 Edit</button>
+    </div>
+    <div id="lostLocationSub" style="font-size:12px;color:#666;margin:-6px 0 8px 24px;">Tagum, Davao del norte</div>
+
+    <textarea id="lostItemDesc" placeholder="Description" style="width:100%;min-height:68px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;padding:12px;margin:10px 0;"></textarea>
+    <input id="lostItemDate" type="text" placeholder="Date" style="width:100%;height:36px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;padding:8px 10px;margin:8px 0;">
+    <input id="lostItemContact" type="text" placeholder="Contact info" style="width:100%;height:36px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;padding:8px 10px;margin:8px 0;">
+
+    <div style="display:flex;justify-content:center;margin-top:12px;">
+      <button id="submitLostPost" style="background:#b20f0f;color:#fff;border:none;border-radius:8px;padding:10px 22px;width:260px;font-weight:700;cursor:pointer;">Post</button>
+    </div>
+  </div>
+<script>
+(function(){
+  const trigger = document.getElementById('postLostTrigger');
+  const modal = document.getElementById('lostPostModal');
+  if(trigger && modal){
+    function openModal(){ modal.classList.add('open'); modal.setAttribute('aria-hidden','false'); }
+    function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+    trigger.addEventListener('click', openModal);
+    modal.addEventListener('click', function(e){ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
+  }
+})();
+</script>
+
+</div>
+
+<!-- Mobile Header -->
+<header class="mobile-header">
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="Lost and found with red background white.png" alt="YouFoundGa logo" style="width: 32px; height: 32px;">
+    <span style="font-weight: 700; font-size: 18px;">YouFoundGa</span>
+  </div>
+  <div style="margin-left: auto;">
+    <button style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">⚙️</button>
+  </div>
+</header>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav">
+  <button class="mobile-nav-item" data-page="home">Home</button>
+  <button class="mobile-nav-item active" data-page="lost">Lost Items</button>
+  <button class="mobile-nav-item" data-page="found">Found Items</button>
+  <button class="mobile-nav-item" data-page="settings">Settings</button>
+</nav>
+
+<!-- Mobile Content -->
+<div class="mobile-content">
+  <h1 style="font-size: 24px; margin: 0 0 8px 0;">Lost Items News Feed</h1>
+  <p style="color: var(--muted); margin: 0 0 16px 0;">Main branch • Tagum, Davao del Norte</p>
+
+  <!-- Category Dropdown -->
+  <div class="mobile-form-group">
+    <select class="mobile-form-select">
+      <option>Category</option>
+      <option>Electronics</option>
+      <option>Clothing</option>
+      <option>Accessories</option>
+      <option>Documents</option>
+      <option>Other</option>
+    </select>
+  </div>
+
+  <!-- Post Lost Item Form -->
+  <div class="mobile-form">
+    <h3 style="margin: 0 0 16px 0;">Post Lost item</h3>
+    
+    <!-- Image Upload Area -->
+    <div style="width: 100%; height: 180px; background: #ddd; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; border: 2px dashed #bbb;">
+      <span style="font-size: 48px; color: #999;">+</span>
+    </div>
+    
+    <div class="mobile-form-group">
+      <input type="text" class="mobile-form-input" placeholder="Item name">
+    </div>
+    
+    <div class="mobile-form-group">
+      <div style="display: flex; align-items: center; gap: 8px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; background: #f9f9f9;">
+        <span>📍</span>
+        <span>Main Branch, UMTC</span>
+        <span style="margin-left: auto; color: var(--brand);">Edit</span>
+      </div>
+    </div>
+    
+    <div class="mobile-form-group">
+      <textarea class="mobile-form-textarea" placeholder="Description"></textarea>
+    </div>
+    
+    <div class="mobile-form-group">
+      <input type="date" class="mobile-form-input" placeholder="Date">
+    </div>
+    
+    <div class="mobile-form-group">
+      <input type="text" class="mobile-form-input" placeholder="Contact info">
+    </div>
+    
+    <button class="mobile-btn mobile-btn-primary" style="width: 100%; padding: 12px;">Post</button>
+  </div>
+
+  <!-- Lost Item Card -->
+  <div class="mobile-item-card">
+    <div style="font-size: 12px; color: #666; margin-bottom: 8px;">16 minutes ago</div>
+    
+    <div class="mobile-item-header">
+      <img class="mobile-item-image" src="WALLET.jpg" alt="Wallet">
+      <div class="mobile-item-info">
+        <div class="mobile-item-title">Wallet</div>
+        <div class="mobile-item-meta">📞 09123456789 • 📅 September 20, 2025</div>
+      </div>
+      <div style="text-align: right;">
+        <div style="font-size: 12px; color: #666;">Jhon doe cruz</div>
+        <div style="font-size: 12px; color: #666;">Student</div>
+      </div>
+    </div>
+    
+    <div style="margin: 8px 0;">
+      <div style="font-weight: 700; margin-bottom: 4px;">📍 Main Branch, UMTC</div>
+      <div style="font-size: 12px; color: #666;">Tagum, Davao del Norte</div>
+    </div>
+    
+    <div style="border: 1px solid #eee; border-radius: 8px; background: #fafafa; padding: 12px; margin: 12px 0;">
+      <div style="font-size: 12px; color: #666; margin-bottom: 4px;">Description</div>
+      <div style="font-size: 14px; line-height: 1.4;">
+        Liesley wallet brand. It has 1000 pesos inside and valid ID's. Please
+        call me on my contact number; last saw it on gym bleachers…
+      </div>
+    </div>
+    
+    <div class="mobile-item-actions">
+      <button class="mobile-btn mobile-btn-primary">💬 Comment</button>
+      <button class="mobile-btn mobile-btn-secondary">📤 5 shares</button>
+    </div>
+  </div>
+</div>
+
+<!-- Floating Action Button -->
+<button class="mobile-fab" id="mobileFab">+</button>
+</body>
+</html>
